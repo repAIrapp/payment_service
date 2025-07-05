@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 // 🟠 Le webhook Stripe a besoin du body brut — donc il doit être défini AVANT express.json()
-app.use("/webhook", webhookRoutes); // ✅ Branche d'abord le webhook ici
+app.use("/api/webhook", webhookRoutes); // ✅ Branche d'abord le webhook ici
 
 app.use(cors());
 app.use(express.json()); // 🔴 À ne PAS mettre avant le webhook
