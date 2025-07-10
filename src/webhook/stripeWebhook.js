@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
   try {
     event = JSON.parse(req.body); 
   } catch (err) {
-    console.error("❌ Webhook parsing error:", err);
+    console.error("Webhook parsing error:", err);
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
