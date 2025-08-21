@@ -4,6 +4,10 @@ const cors = require("cors");
 const paymentRoutes = require("./src/routes/paymentRoute");
 const webhookRoutes = require("./src/routes/webhookroute"); 
 const client = require("prom-client");
+const rateLimit = require("express-rate-limit");
+const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require("helmet");
+
 dotenv.config();
 const app = express();
 
@@ -18,6 +22,8 @@ register.registerMetric(paymentRequestsCounter);
 
 client.collectDefaultMetrics({ register });
 
+app.use(helmet());
+app.use(mongoSanitize());
 app.use((req, res, next) => {
   res.on("finish", () => {
     paymentRequestsCounter.inc({
@@ -28,7 +34,12 @@ app.use((req, res, next) => {
   });
   next();
 });
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 min
+  max: 100, // Limite chaque IP à 100 requêtes par fenêtre
+});
 
+app.use(limiter);
 app.use("/api/webhook", webhookRoutes); 
 
 app.use(cors());
