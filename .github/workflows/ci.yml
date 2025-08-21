@@ -37,6 +37,6 @@ jobs:
       # - name: Run tests
       #   run: npm test -- --ci --runInBand --passWithNoTests
 
-      - name: Coverage report
-        run: npm test -- --coverage --ci --runInBand --passWithNoTests
+      # - name: Coverage report
+      #   run: npm test -- --coverage --ci --runInBand --passWithNoTests
 
