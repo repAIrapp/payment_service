@@ -13,8 +13,8 @@ exports.createCheckoutSession = async (userId, plan) => {
         quantity: 1,
       },
     ],
-    success_url: `http://localhost:3000/success`,
-    cancel_url: `http://localhost:3000/cancel`,
+    success_url: "http://localhost:3000/success",
+    cancel_url: "http://localhost:3000/cancel",
     metadata: { userId }
   });
 

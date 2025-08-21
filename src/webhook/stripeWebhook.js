@@ -64,8 +64,8 @@ module.exports = (req, res) => {
     const endDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
 
     axios.patch(`${process.env.DB_SERVICE_URL}/api/users/subscription/${userId}`, {
-      type: 'premium',
-      status: 'active',
+      type: "premium",
+      status: "active",
       date_start: now,
       date_end: endDate
     }).then(() => {

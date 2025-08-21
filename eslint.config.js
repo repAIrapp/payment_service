@@ -1,4 +1,3 @@
-// eslint.config.js
 module.exports = [
   {
     files: ["**/*.js"],
@@ -10,6 +9,8 @@ module.exports = [
         module: "readonly",
         __dirname: "readonly",
         process: "readonly",
+        console: "readonly",      
+        exports: "readonly",      
       },
     },
     rules: {
@@ -21,3 +22,4 @@ module.exports = [
     },
   },
 ];
+
