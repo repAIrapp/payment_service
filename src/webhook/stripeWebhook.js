@@ -52,7 +52,7 @@ module.exports = (req, res) => {
   try {
     event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
   } catch (err) {
-    console.error("⚠️ Webhook signature vérification échouée.", err.message);
+    console.error("Webhook signature vérification échouée.", err.message);
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
